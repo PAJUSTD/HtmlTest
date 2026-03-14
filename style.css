@@ -8,10 +8,30 @@
     color: white;
 }
 
+hr {
+    width: 780px;         /* Или 50%, если хочешь на пол-экрана */
+    border: 3px solid orange; /* Толщина и цвет линии */
+    margin: 10px 0;       /* Отступы сверху и снизу */
+}
+
 /* Обращаемся к заголовку по ID */
 #text {
     background-color: rgb(0, 0, 0);
     color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+#bely {
+    background-color: rgb(117, 57, 145);
+    color: rgb(255, 241, 241);
+    padding: 5px 15px;
+    border-radius: 5px;
+    display: inline-block;
+}
+#bely2 {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 241, 241);
     padding: 5px 15px;
     border-radius: 5px;
     display: inline-block;
@@ -57,3 +77,4 @@ body {
     
     background-color: #222; /* Твой темный фон */
 }
+
