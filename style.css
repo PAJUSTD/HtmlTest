@@ -444,3 +444,34 @@ hr {
         opacity: 1 !important;
     }
 }
+
+
+
+
+/* Этот код сработает ТОЛЬКО на телефонах */
+@media (max-width: 700px) {
+    /* Выравниваем все главные плашки и кнопки по одной ширине */
+    .text, #nenazim, #TRub, #bely2, #bely3 {
+        width: 85% !important;        /* Все блоки будут одной ширины (85% экрана) */
+        max-width: 350px !important;  /* Чтобы не были слишком огромными */
+        min-width: 0 !important;      /* Сбрасываем старые ограничения */
+        
+        margin-left: auto !important; /* Центрирует блок слева */
+        margin-right: auto !important;/* Центрирует блок справа */
+        
+        display: flex !important;     /* Для центровки текста внутри */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        
+        padding: 15px 10px !important;
+        box-sizing: border-box;       /* Чтобы отступы не распирали кнопку */
+    }
+
+    /* Чтобы кнопки категорий (Все, Игры...) тоже стояли ровно */
+    .categories {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+}
