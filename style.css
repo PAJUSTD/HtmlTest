@@ -1,104 +1,257 @@
-/* Обращаемся к кнопке по ID */
-#my-btn {
-    background-color: rgb(247, 119, 0); 
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: white;
-}
-
-hr {
-    width: 780px;         /* Или 50%, если хочешь на пол-экрана */
-    border: 3px solid orange; /* Толщина и цвет линии */
-    margin: 10px 0;       /* Отступы сверху и снизу */
-}
-
-/* Обращаемся к заголовку по ID */
-.text {
-    background-color: rgb(0, 0, 0);
-    color: white;
-    font-size: 80px;
-    padding: 15px 105px;
-    border-radius: 50px;
-    font-weight: bold;
-    display: inline-block;
-}
-#bely {
-    background-color: rgb(117, 57, 145);
-    color: rgb(255, 241, 241);
-    padding: 5px 15px;
-    border-radius: 5px;
-    display: inline-block;
-}
-#bely2 {
-    background-color: rgb(255, 0, 0);
-    color: rgb(255, 241, 241);
-    padding: 5px 15px;
-    border-radius: 5px;
-    display: inline-block;
-}
-/* 1. Создаем саму анимацию (как Timeline в Godot) */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* 2. Применяем её к кнопке */
-/* 1. Добавляем плавность в основной блок кнопки */
-#my-btn {
-    /* ... твои старые стили (цвет, отступы) ... */
-    
-    transition: transform 0.1s ease, background-color 0.2s; /* Плавность на 0.1 сек */
-}
-
-/* 2. Анимация САМОГО НАЖАТИЯ */
-#my-btn:active {
-    transform: scale(0.92);           /* Уменьшаем кнопку на 8% (эффект нажатия) */
-    background-color: rgb(200, 90, 0); /* Делаем чуть темнее при клике */
-    box-shadow: inset 0 3px 5px rgba(0,0,0,0.2); /* Внутренняя тень (эффект глубины) */
-}
-
+/* 1. БАЗА (ФОН И ЦЕНТР) */
 body {
-    /* --- 1. ФОН --- */
-/* --- 1. ФОН --- */
     background-image: url("https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149009903.jpg?semt=ais_hybrid&w=740&q=80");
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Чтобы фон не уезжал при скролле */
+    background-attachment: fixed;
+    background-color: #1a1a1a;
 
-
-    /* --- 2. ЦЕНТРИРОВАНИЕ (FLEXBOX) --- */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    flex-direction: column; /* Элементы идут сверху вниз */
-    gap: 3px;              /* Удобный отступ между всеми элементами */
-
-    /* --- 3. РАЗМЕРЫ ЭКРАНА --- */
-    height: 100vh;          /* Занимает всю высоту экрана */
-    margin: 0;              /* Убирает белые поля по бокам */
-    
-    color: white;           /* Сразу делаем весь текст белым по умолчанию */
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    gap: 30px; /* Расстояние между крупными блоками */
+    color: white;
+    font-family: sans-serif;
 }
 
- 
-/* 1. Описываем саму анимацию (как таймлайн) */
+/* 2. ШАПКА И ТЕКСТЫ */
+.text {
+    margin-top: -20px;
+    background: rgba(87, 94, 69, 0.199);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 60px; /* Немного уменьшил, чтобы не на весь экран */
+    text-shadow: 8px 8px 0px rgba(0, 0, 0, 0.363); 
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+#bely {
+    text-shadow: 2px 2px 0px rgb(0, 0, 0); 
+}
+#bely { background-color: 
+    #838383; padding: 5px 15px; border-radius: 5px; }
+#bely2 {
+    margin-top: -50px;
+    background: rgba(87, 94, 69, 0.199);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 15px 120px;
+}
+
+hr {
+    width: 100%;
+    max-width: 800px;
+    border: 2px solid orange;
+}
+
+/* 3. КНОПКИ КАТЕГОРИЙ */
+.categories {
+    display: flex;
+    gap: 15px;
+}
+
+.cat-btn {
+    margin-top: -35px;
+    width: 110px;
+    background: #4444443d;
+    color: white;
+    border: 2px solid rgba(179, 179, 179, 0.308);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 200px;
+    transition: 0.3s;
+}
+
+.cat-btn:hover { background: orange; }
+
+/* 4. ГЛАВНОЕ: КОНТЕЙНЕР ДЛЯ НОВОСТЕЙ */
+/* Чтобы новости стояли РЯДОМ, а не в колонну */
+.news-container {
+    display: flex;
+    flex-wrap: wrap;    /* Позволяет переносить на новую строку */
+    justify-content: center;
+    gap: 50px;          /* ВОТ ТВОЕ РАССТОЯНИЕ МЕЖДУ НОВОСТЯМИ */
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+.news-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+    width: 350px; /* Фиксированная ширина карточки */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.news-item:hover { transform: translateY(-10px); }
+
+.news-item img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+/* 5. КНОПКА СО ЗВУКОМ */
+#my-btn {
+    background-color: orange;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.1s;
+}
+#my-btn:active { transform: scale(0.9); }
+
+.hidden { display: none !important; }
+
 @keyframes fadeInUp {
     0% {
-        opacity: 0;            /* Полностью прозрачный */
-        transform: translateY(30px); /* Смещен вниз на 30 пикселей */
+        opacity: 0;
+        transform: translateY(-50px); /* Прилетает сверху */
+    }
+    40% {
+
+        transform: translateY(5px);  /* Легкий отскок обратно вверх */
     }
     100% {
-        opacity: 1;            /* Полностью видимый */
-        transform: translateY(0);    /* Встает на свое законное место */
+        opacity: 1;
+        transform: translateY(0);     /* Встает идеально ровно */
     }
 }
 
-/* 2. Применяем её к тексту приветствия */
+/* 2. Применяем к классу */
 .welcome-text {
-    /* Название анимации | Время | Тип движения (плавно) */
-    animation: fadeInUp 1.5s ease-out;
+    /* Название | Время | Плавность | Остановка в финальной точке */
+    animation: fadeInUp 0.6s ease-out forwards;
+}
 
+
+@media (min-width: 1200px) {
+    /* Увеличиваем базовый размер шрифта, от него вырастет всё остальное */
+    html {
+        zoom: 1.2; /* Увеличит весь сайт на 20% */
+        /* Или используй transform: scale(1.1); но zoom проще */
+    }
+
+    /* Увеличиваем ширину карточек новостей, раз места много */
+    .news-item {
+        width: 500px; 
+    }
+    #bely2 {
+        font-size: 50px;
+    }
+    .cat-btn {
+        font-size: 50px;
+    }
+    /* Делаем заголовок еще мощнее */
+    .text {
+        font-size: 150px;
+    }
+}
+/* Используем ту же анимацию, что и для заголовка */
+.news-item {
+    opacity: 0; /* Сначала скрываем */
+    animation: fadeInUp 1.5s ease-out forwards;
+}
+
+/* Добавляем задержку для второй карточки */
+.news-item:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+/* Если добавишь третью — ей 0.6s и так далее */
+
+.cat-btn:focus {
+    background: rgb(116, 255, 139);
+    box-shadow: 0 0 15px rgb(157, 255, 0);
+    border-color: white;
+}
+
+
+.weelcome-text {
+    /* ... твои старые стили ... */
+    
+    align-self: flex-start; /* Уйдет в левый край */
+    /* Или align-self: flex-end; если хочешь в правый */
+    font-size: 11px;
+    margin-left: 20px; /* Чтобы не прилипал вплотную к краю экрана */
+    margin-top: 2px;
+}
+
+
+
+.news-item img {
+    /* ... твои старые стили ... */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.news-item:hover img {
+    transform: scale(1.05) rotate(1deg); /* Чуть увеличиваем и наклоняем */
+}
+
+
+/* Делаем магию только для больших экранов (ПК) */
+@media (min-width: 1024px) {
+    body::before, body::after {
+        content: "";
+        position: fixed; /* Приклеены к экрану */
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        filter: blur(120px); /* Сильное размытие создает эффект тумана */
+        z-index: -1; /* Уходим под текст и кнопки */
+        opacity: 0.4; /* Еле заметное свечение */
+        pointer-events: none; /* Чтобы мышка сквозь них кликала */
+    }
+
+    /* Оранжевое замутнение в левом нижнем углу */
+    body::before {
+        background: orange;
+        bottom: -100px;
+        left: -150px;
+        six
+    }
+
+    /* Фиолетовое или синее замутнение в правом верхнем углу */
+    body::after {
+        background: rgb(255, 187, 0); /* Можно поменять на purple под цвет кнопок */
+        top: 500px;
+        right: -110px;
+    }
+    #bely2 {
+        margin-top: -100px;
+        width: 750px;
+        font-size: 81px;
+        
+    }
+    #bely {
+        font-size: 25px;
+    }
+    .news-item {
+        width: 800px;
+        size: 
+    }
+    .cat-btn {
+        margin-top: -85px;
+        width: 250px;
+    }
+}
+.cat-btn {
+    animation: fadeInUp 3s ease-out forwards;
+
+}
+#bely2 {
+    animation: fadeInUp 3.2s ease-out forwards;
 }
