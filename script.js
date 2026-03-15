@@ -1,19 +1,40 @@
+// 1. ЛОГИКА ДЛЯ ЗВУКА И ТЕКСТА КНОПКИ
 const knopka = document.getElementById('my-btn');
 
-knopka.onclick = function() {
-    // 1. Каждый клик создаем НОВЫЙ объект звука
-    // Это позволяет им играть одновременно
-    const newAudio = new Audio('sound.mp3'); 
-    
-    // 2. Запускаем его
-    newAudio.play();
+if (knopka) {
+    knopka.onclick = function() {
+        const newAudio = new Audio('sound.mp3'); 
+        newAudio.play();
 
-    // 3. (Опционально) Чтобы не засорять память, 
-    // удаляем объект после того, как звук закончится
-    newAudio.onended = function() {
-        this.remove(); 
-    };
+        // СОХРАНЯЕМ ТЕКСТ, чтобы знать что возвращать
+        const originalText = "Звук громкий не нажимать";
 
-    console.log("Бах! Еще один звук наложился");
-};
-//12345
+        // МЕНЯЕМ НА ПОЛСЕКУНДЫ
+        knopka.innerText = "Я предупреждал";
+        knopka.style.backgroundColor = "red";
+
+        // ТАЙМЕР (500 мс = 0.5 сек)
+        setTimeout(function() {
+            knopka.innerText = originalText;
+            knopka.style.backgroundColor = "orange"; 
+        }, 1000); 
+
+        newAudio.onended = function() {
+            this.remove(); 
+        };
+
+        console.log("Бах! Текст изменился и звук наложился");
+    }; 
+}
+
+// 2. ЛОГИКА ДЛЯ ФИЛЬТРА КАТЕГОРИЙ (оставляем как есть, она верная)
+function filter(category) {
+    const items = document.querySelectorAll('.news-item');
+    items.forEach(item => {
+        if (category === 'all' || item.classList.contains(category)) {
+            item.style.display = 'flex'; 
+        } else {
+            item.style.display = 'none'; 
+        }
+    });
+}
