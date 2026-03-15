@@ -16,3 +16,4 @@ knopka.onclick = function() {
 
     console.log("Бах! Еще один звук наложился");
 };
+//12345

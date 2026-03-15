@@ -8,17 +8,35 @@
     
 </head>
 <body>
-
-    <h1 id="text">PAJUST SITE</h1>
-    <button id="my-btn">Звук громкий не нажимать</button>
-    <script src="script.js"></script>
-    <p></p>
-    <hr id="razdelenie">
+    <h1 class="text welcome-text">PAJUST SITE</h1>
     <p id="bely2">последние новости:</p>
-    <p id="bely">я сделал 54 - 90 на катаклизме омайгад</p>
-    <img id="catac" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnBATU_N2Er_-krlnWGhl9-ZM2XXTNZhHhoA&s"</img>
-    <p id="bely">короче этот как там его ну ром4ик 100 алмазов выйграл да</p>
-    <img id="necatac" src="https://avatars.mds.yandex.net/get-vthumb/4234514/03b18006ebbf02f660f1ba83ab9c0172/800x450"</img>
+    <nav class="categories">
+    <button class="cat-btn" onclick="filter('all')">Все</button>
+    <button class="cat-btn" onclick="filter('games')">Игры</button>
+    <button class="cat-btn" onclick="filter('other')">Другое</button>
+    </nav>
+    <!-- Первая новость: ОТКРЫЛИ div -->
+    <div class="news-item games">
+        <p id="bely">я сделал 54 - 90 на катаклизме омайгад</p>
+        <img id="catac" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnBATU_N2Er_-krlnWGhl9-ZM2XXTNZhHhoA&s">
+    </div> <!-- ЗАКРЫЛИ div здесь, после картинки -->
     
+    <!-- Вторая новость: ОТКРЫЛИ div -->
+    <div class="news-item other">
+        <p id="bely">короче этот как там его ну ром4ик 100 алмазов выйграл да</p>
+        <img id="necatac" src="https://avatars.mds.yandex.net/get-vthumb/4234514/03b18006ebbf02f660f1ba83ab9c0172/800x450">
+    ...
+    </div> <!-- Закрыли вторую новость -->
+    <button id="my-btn">Звук громкий не нажимать</button>
+    <script src="script.js" defer></script>
+    <p>конец новостей, иди поплач хотя не не плач тут скора будет круто</p>
+
+
+
+
+
+
+
+    <!-- 1. Создаем обертку для всего контента под заголовком -->
 </body>
 </html>
