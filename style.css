@@ -330,6 +330,12 @@ hr {
     }
     body {
         zoom: 1.5; /* Увеличит всё в 1.5 раза. Для 2-кратного поставь 2.0 */
+        -webkit-tap-highlight-color: transparent;
+        .cat-btn, #nenazim, #rub2, #bely2, #bely3 {
+          user-select: none; /* Запрещает выделять текст внутри кнопки */
+             -webkit-user-select: none;
+        }
+        outline: none;
     }
     body::before { background: var(--primary); bottom: -100px; left: -150px; }
     body::after { background: #ffbb00; top: 500px; right: -110px; }
