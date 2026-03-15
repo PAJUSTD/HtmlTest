@@ -336,6 +336,7 @@ hr {
              -webkit-user-select: none;
         }
         outline: none;
+        touch-action: pan-y
     }
     body::before { background: var(--primary); bottom: -100px; left: -150px; }
     body::after { background: #ffbb00; top: 500px; right: -110px; }
