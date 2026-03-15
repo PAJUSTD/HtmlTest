@@ -1,6 +1,7 @@
 // 1. ЛОГИКА ДЛЯ ЗВУКА И ТЕКСТА КНОПКИ
 const knopka = document.getElementById('my-btn');
 const knopka2 = document.getElementById('nenazim');
+const knopka3 = document.getElementById('TRub');
 
 if (knopka) {
     knopka.onclick = function() {
@@ -43,5 +44,10 @@ function filter(category) {
 if (knopka2) {
     knopka2.onclick = function() {
         window.location.href = "https://pajustd.github.io/knopkaNeNazimat/"; 
+    }
+}
+if (knopka3) {
+    knopka3.onclick = function() {
+        window.location.href = "https://pajustd.github.io/PAJUSTINC.github.io/"; 
     }
 }
